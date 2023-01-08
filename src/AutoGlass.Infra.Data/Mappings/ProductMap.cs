@@ -33,7 +33,7 @@ public sealed class ProductMap : IEntityTypeConfiguration<Product>
 
         builder.Property(p => p.IsActive)
             .HasColumnName("IsActive")
-            .HasColumnType("boolean");
+            .HasColumnType("bit");
 
         builder.Ignore(p => p.Notifications);
     }

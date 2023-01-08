@@ -32,7 +32,7 @@ namespace AutoGlass.Infra.Data.Migrations
                     Description = table.Column<string>(type: "varchar(100)", nullable: false),
                     ProductionDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     ExpirationDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    IsActive = table.Column<bool>(type: "boolean", nullable: false)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
