@@ -11,6 +11,7 @@ public sealed class CNPJ : ValueObject
 
     public CNPJ(string number)
     {
+        Format(ref number);
         Number = number;
 
         AddNotifications(new Contract<CNPJ>()
@@ -19,7 +20,14 @@ public sealed class CNPJ : ValueObject
             );
     }
 
-    public string Number { get; private set; }
+    public string Number { get; private set; } = null!;
+
+    private static void Format(ref string number)
+    {
+        number = number.Replace(".", string.Empty)
+            .Replace("-", string.Empty)
+            .Replace("/", string.Empty);
+    }
 
     public override string ToString() => Number;
 }

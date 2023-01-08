@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoGlass.Infra.Data", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGlass.Infra.CrossCutting.IoC", "src\AutoGlass.Infra.CrossCutting.IoC\AutoGlass.Infra.CrossCutting.IoC.csproj", "{1857C8DB-8A63-4A71-8D63-17C983B8D9C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoGlass.UnitTests", "src\AutoGlass.UnitTests\AutoGlass.UnitTests.csproj", "{594F5BD4-BE11-4D31-BB47-15AC048E1EC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{1857C8DB-8A63-4A71-8D63-17C983B8D9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1857C8DB-8A63-4A71-8D63-17C983B8D9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1857C8DB-8A63-4A71-8D63-17C983B8D9C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594F5BD4-BE11-4D31-BB47-15AC048E1EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594F5BD4-BE11-4D31-BB47-15AC048E1EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594F5BD4-BE11-4D31-BB47-15AC048E1EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594F5BD4-BE11-4D31-BB47-15AC048E1EC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{9C33A0E1-AE75-470E-9BA4-8059D614AFA0} = {86FEAB60-785B-443A-AAB8-E000C1551392}
 		{7924632D-C451-4652-A2A1-FD95BF905069} = {18CA10E8-921D-4209-917F-4ADE506A6A07}
 		{1857C8DB-8A63-4A71-8D63-17C983B8D9C1} = {48A5CBE9-84E6-41B2-97DF-384E210875E9}
+		{594F5BD4-BE11-4D31-BB47-15AC048E1EC6} = {A56E36B2-61EE-45BE-B3DF-EEDC722F09E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {948BB7EC-5F4C-4C5A-85E9-2415E6E59828}

@@ -20,7 +20,7 @@ public sealed class Description : ValueObject
             );
     }
 
-    public string Text { get; private set; }
+    public string Text { get; private set; } = null!;
 
     public override string ToString() => Text;
 }
