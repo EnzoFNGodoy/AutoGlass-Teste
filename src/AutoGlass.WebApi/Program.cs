@@ -1,4 +1,3 @@
-using AutoGlass.Infra.CrossCutting.IoC;
 using AutoGlass.WebApi.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
