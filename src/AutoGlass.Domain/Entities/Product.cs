@@ -10,16 +10,17 @@ public sealed class Product : Entity
     { }
 
     public Product(
-        Description description, 
-        DateTime productionDate, 
-        DateTime expirationDate)
+        Description description,
+        DateTime productionDate,
+        DateTime expirationDate,
+        bool isActive = true)
     {
         Description = description;
         ProductionDate = productionDate;
         ExpirationDate = expirationDate;
-        IsActive = true;
+        IsActive = isActive;
 
-        AddNotifications(Provider, Description, 
+        AddNotifications(Description,
             new Contract<Product>()
             .Requires()
             .IsGreaterOrEqualsThan(ExpirationDate, ProductionDate, "Product.ExpirationDate", "The production date cannot be greather or equals than the expiration date")
@@ -29,9 +30,10 @@ public sealed class Product : Entity
     public Description Description { get; private set; } = null!;
     public DateTime ProductionDate { get; private set; }
     public DateTime ExpirationDate { get; private set; }
-    public bool IsActive { get; private set; } 
+    public bool IsActive { get; private set; }
 
-    public Provider Provider { get; private set; } 
+    public Guid? ProviderId { get; private set; }
+    public Provider? Provider { get; private set; }
 
     public void Activate()
     {
@@ -43,5 +45,16 @@ public sealed class Product : Entity
     {
         if (IsValid)
             IsActive = false;
+    }
+
+    public void SetProvider(Provider provider)
+    {
+        AddNotifications(provider);
+
+        if (IsValid && IsActive)
+        {
+            ProviderId = provider.Id;
+            Provider = provider;
+        }
     }
 }

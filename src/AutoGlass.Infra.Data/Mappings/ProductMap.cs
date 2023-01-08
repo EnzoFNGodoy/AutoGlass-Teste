@@ -12,7 +12,7 @@ public sealed class ProductMap : IEntityTypeConfiguration<Product>
 
         builder.HasOne(p => p.Provider)
             .WithMany(prov => prov.Products)
-            .HasForeignKey(p => p.Id);
+            .HasForeignKey(p => p.ProviderId);
 
         builder.OwnsOne(p => p.Description, description =>
         {
