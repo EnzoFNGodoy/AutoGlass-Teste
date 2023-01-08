@@ -6,6 +6,9 @@ namespace AutoGlass.Domain.Entities;
 
 public sealed class Product : Entity
 {
+    private Product() // Empty constructor for EF
+    { }
+
     public Product(
         Description description, 
         DateTime productionDate, 
@@ -23,10 +26,10 @@ public sealed class Product : Entity
             );
     }
 
-    public Description Description { get; private set; }
+    public Description Description { get; private set; } = null!;
     public DateTime ProductionDate { get; private set; }
     public DateTime ExpirationDate { get; private set; }
-    public bool IsActive { get; private set; }
+    public bool IsActive { get; private set; } 
 
     public Provider Provider { get; private set; } 
 

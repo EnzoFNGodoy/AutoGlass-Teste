@@ -10,12 +10,21 @@
     <PackageReference Include="Flunt" Version="2.0.5" />
     <PackageReference Include="Flunt.Br" Version="2.0.0" />
     <PackageReference Include="Flunt.Extensions.Br" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoGlass.Infra.CrossCutting.IoC\AutoGlass.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\AutoGlass.Infra.Data\AutoGlass.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

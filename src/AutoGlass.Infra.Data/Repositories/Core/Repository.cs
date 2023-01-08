@@ -17,33 +17,17 @@ public class Repository<T> : IRepository<T> where T : Entity
         _dbSet = _context.Set<T>();
     }
 
-    public Task<bool> Delete(T entity)
-    {
-        _dbSet.Remove(entity);
-    }
+    public async Task<IEnumerable<T>> GetAll() => await _dbSet.ToListAsync();
 
-    public Task<IEnumerable<T>> GetAll()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> where)
+        => await _dbSet.Where(where).ToListAsync();
 
-    public Task<T> GetOneWhere(Expression<Func<T, bool>> where)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<T> GetOneWhere(Expression<Func<T, bool>> where)
+        => await _dbSet.FirstOrDefaultAsync(where);
 
-    public Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> where)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task Insert(T entity) => await _dbSet.AddAsync(entity);
 
-    public Task<T> Insert(T entity)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task Update(T entity) => await Task.Run(() => _dbSet.Update(entity));
 
-    public Task<T> Update(T entity)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task Delete(T entity) => await Task.Run(() => _dbSet.Remove(entity));
 }

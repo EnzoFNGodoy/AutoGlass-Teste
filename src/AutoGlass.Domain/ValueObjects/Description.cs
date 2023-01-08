@@ -21,4 +21,6 @@ public sealed class Description : ValueObject
     }
 
     public string Text { get; private set; }
+
+    public override string ToString() => Text;
 }

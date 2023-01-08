@@ -1,4 +1,5 @@
 ﻿using AutoGlass.Domain.Entities;
+using AutoGlass.Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
@@ -18,7 +19,7 @@ public sealed class AutoGlassContext : DbContext
     public DbSet<Provider> Providers => Set<Provider>();
     #endregion
 
-    protected override ModelBuilder OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ConfigureMappings();
 
