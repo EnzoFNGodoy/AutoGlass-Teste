@@ -10,10 +10,12 @@ public sealed class Product : Entity
     { }
 
     public Product(
+        Guid productId,
         Description description,
         DateTime productionDate,
         DateTime expirationDate,
-        bool isActive = true)
+        bool isActive = true) 
+        : base(productId)
     {
         Description = description;
         ProductionDate = productionDate;
@@ -23,7 +25,7 @@ public sealed class Product : Entity
         AddNotifications(Description,
             new Contract<Product>()
             .Requires()
-            .IsGreaterOrEqualsThan(ExpirationDate, ProductionDate, "Product.ExpirationDate", "The production date cannot be greather or equals than the expiration date")
+            .IsGreaterOrEqualsThan(ExpirationDate, ProductionDate, "Product.ExpirationDate", "A data de validade deve ser futura em relação à data de fabricação.")
             );
     }
 

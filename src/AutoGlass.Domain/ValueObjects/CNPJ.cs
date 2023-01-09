@@ -4,19 +4,19 @@ using Flunt.Validations;
 
 namespace AutoGlass.Domain.ValueObjects;
 
-public sealed class CNPJ : ValueObject
+public sealed class Cnpj : ValueObject
 {
-    private CNPJ() // Empty constructor for EF
+    private Cnpj() // Empty constructor for EF
     { }
 
-    public CNPJ(string number)
+    public Cnpj(string number)
     {
         Format(ref number);
         Number = number;
 
-        AddNotifications(new Contract<CNPJ>()
+        AddNotifications(new Contract<Cnpj>()
             .Requires()
-            .IsCnpj(Number, "CNPJ.Number", "The CNPJ is invalid.")
+            .IsCnpj(Number, "CNPJ.Number", "CNPJ Inválido.")
             );
     }
 

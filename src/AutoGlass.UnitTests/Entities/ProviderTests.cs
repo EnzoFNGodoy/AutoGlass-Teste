@@ -1,4 +1,5 @@
 ﻿using AutoGlass.Domain.Entities;
+using AutoGlass.Domain.ValueObjects;
 using AutoGlass.UnitTests.FakeData;
 
 namespace AutoGlass.UnitTests.Entities;
@@ -11,6 +12,7 @@ public sealed class ProviderTests
         var descriptionTest = new DescriptionData().InvalidDescription;
         var cnpjTest = new CNPJData().ValidCNPJ;
         var provider = new Provider(
+            providerId: Guid.NewGuid(),
             description: descriptionTest,
             cnpj: cnpjTest
             );
@@ -24,6 +26,7 @@ public sealed class ProviderTests
         var descriptionTest = new DescriptionData().ValidDescription;
         var cnpjTest = new CNPJData().InvalidCNPJ;
         var provider = new Provider(
+            providerId: Guid.NewGuid(),
             description: descriptionTest,
             cnpj: cnpjTest
             );
@@ -37,6 +40,7 @@ public sealed class ProviderTests
         var descriptionTest = new DescriptionData().ValidDescription;
         var cnpjTest = new CNPJData().ValidCNPJ;
         var provider = new Provider(
+            providerId: Guid.NewGuid(),
             description: descriptionTest,
             cnpj: cnpjTest
             );
@@ -51,6 +55,7 @@ public sealed class ProviderTests
         var descriptionTest = new DescriptionData().ValidDescription;
         var cnpjTest = new CNPJData().ValidCNPJ;
         var provider = new Provider(
+            providerId: Guid.NewGuid(),
             description: descriptionTest,
             cnpj: cnpjTest
             );
@@ -71,6 +76,7 @@ public sealed class ProviderTests
         var descriptionTest = new DescriptionData().ValidDescription;
         var cnpjTest = new CNPJData().ValidCNPJ;
         var provider = new Provider(
+            providerId: Guid.NewGuid(),
             description: descriptionTest,
             cnpj: cnpjTest
             );
@@ -90,6 +96,7 @@ public sealed class ProviderTests
         var descriptionTest = new DescriptionData().InvalidDescription;
         var cnpjTest = new CNPJData().InvalidCNPJ;
         var provider = new Provider(
+            providerId: Guid.NewGuid(),
             description: descriptionTest,
             cnpj: cnpjTest
             );
@@ -100,6 +107,66 @@ public sealed class ProviderTests
 
         Assert.False(provider.Products.Any());
         Assert.True(product.IsValid);
+        Assert.False(provider.IsValid);
+    }
+    #endregion
+
+    #region UpdateDescription
+    [Fact]
+    public void Should_UpdateDescription_When_Description_IsValid()
+    {
+        var descriptionTest = new DescriptionData().ValidDescription;
+        var cnpjTest = new CNPJData().ValidCNPJ;
+        var provider = new Provider(
+            providerId: Guid.NewGuid(),
+            description: descriptionTest,
+            cnpj: cnpjTest
+            );
+
+        var newDescription = new Description("Nova Descrição");
+
+        provider.UpdateDescription(newDescription);
+
+        Assert.Equal(newDescription.Text, provider.Description.Text);
+        Assert.True(newDescription != descriptionTest);
+        Assert.True(provider.IsValid);
+    }
+
+    [Fact]
+    public void ShouldNot_UpdateDescription_When_Description_IsInvalid()
+    {
+        var descriptionTest = new DescriptionData().ValidDescription;
+        var cnpjTest = new CNPJData().ValidCNPJ;
+        var provider = new Provider(
+            providerId: Guid.NewGuid(),
+            description: descriptionTest,
+            cnpj: cnpjTest
+            );
+
+        var newDescription = new DescriptionData().InvalidDescription;
+
+        provider.UpdateDescription(newDescription);
+
+        Assert.NotEqual(newDescription.Text, provider.Description.Text);
+        Assert.False(provider.IsValid);
+    }
+
+    [Fact]
+    public void ShouldNot_UpdateDescription_When_Provider_IsInvalid()
+    {
+        var descriptionTest = new DescriptionData().ValidDescription;
+        var cnpjTest = new CNPJData().InvalidCNPJ;
+        var provider = new Provider(
+            providerId: Guid.NewGuid(),
+            description: descriptionTest,
+            cnpj: cnpjTest
+            );
+
+        var newDescription = new DescriptionData().ValidDescription;
+
+        provider.UpdateDescription(newDescription);
+
+        Assert.Equal(newDescription.Text, provider.Description.Text);
         Assert.False(provider.IsValid);
     }
     #endregion

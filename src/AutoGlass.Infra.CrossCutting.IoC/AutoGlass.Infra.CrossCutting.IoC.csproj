@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AutoGlass.Application\AutoGlass.Application.csproj" />
     <ProjectReference Include="..\AutoGlass.Domain\AutoGlass.Domain.csproj" />
     <ProjectReference Include="..\AutoGlass.Infra.Data\AutoGlass.Infra.Data.csproj" />
   </ItemGroup>

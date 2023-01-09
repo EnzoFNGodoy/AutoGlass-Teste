@@ -10,6 +10,9 @@ public static class DatabaseConfig
         if (services is null) throw new ArgumentNullException(nameof(services));
 
         services.AddDbContext<AutoGlassContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("AutoGlassConnection")));
+        {
+            options.UseSqlServer(configuration.GetConnectionString("AutoGlassConnection"));
+            options.EnableSensitiveDataLogging();
+        });
     }
 }

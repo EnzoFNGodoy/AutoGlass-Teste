@@ -1,7 +1,6 @@
 ﻿using AutoGlass.Domain.Entities;
 using AutoGlass.Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace AutoGlass.Infra.Data.Context;
 

@@ -10,6 +10,7 @@ public sealed class ProductTests
     {
         var descriptionTest = new DescriptionData().InvalidDescription;
         var product = new Product(
+            productId: Guid.NewGuid(),
             description: descriptionTest,
             productionDate: new DateTime(2023, 01, 07),
             expirationDate: new DateTime(2023, 01, 10)
@@ -23,6 +24,7 @@ public sealed class ProductTests
     {
         var descriptionTest = new DescriptionData().ValidDescription;
         var product = new Product(
+            productId: Guid.NewGuid(),
             description: descriptionTest,
             productionDate: new DateTime(2023, 01, 07),
             expirationDate: new DateTime(2023, 01, 05)
@@ -36,6 +38,7 @@ public sealed class ProductTests
     {
         var descriptionTest = new DescriptionData().ValidDescription;
         var product = new Product(
+            productId: Guid.NewGuid(),
             description: descriptionTest,
             productionDate: new DateTime(2023, 01, 07),
             expirationDate: new DateTime(2023, 01, 10)

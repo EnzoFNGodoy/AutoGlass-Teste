@@ -1,16 +1,26 @@
 using AutoGlass.WebApi.Configurations;
+using AutoGlass.WebApi.Configurations.Swagger;
+using Microsoft.AspNetCore.OData;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddOData(opt =>
+    {
+        opt.Select().Count().Filter().OrderBy().SetMaxTop(100).SkipToken().Expand();
+    });
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerConfiguration();
 
 // Resolve dependencies
 builder.Services.AddDependencyInjectionConfiguration();
 
 // Adding SQLServer database configuration
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
+
+// Adding AutoMapper configuration
+builder.Services.AddAutoMapperConfiguration();
 
 var app = builder.Build();
 
@@ -21,8 +31,7 @@ app.UseCors(c =>
             c.WithMethods("*");
         });
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerSetup();
 
 app.UseHttpsRedirection();
 

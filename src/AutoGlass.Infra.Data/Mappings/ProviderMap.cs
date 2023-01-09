@@ -26,6 +26,8 @@ public sealed class ProviderMap : IEntityTypeConfiguration<Provider>
             .HasColumnName("CNPJ")
             .HasColumnType("varchar(14)");
 
+            cnpj.HasIndex(c => c.Number).IsUnique();
+
             cnpj.Ignore(c => c.Notifications);
         });
 
